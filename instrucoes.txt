@@ -1,0 +1,15 @@
+Tenha instalado o Node.
+
+Vamos usar o Vite para criar um novo projeto. Acesse o site do Vite e use o Getting Started para ter certeza que os comandos não mudaram.
+
+Para iniciar um novo projeto abra o terminal em no diretório de sua preferência e use o seguinte comando
+
+npm create vite@latest
+
+ou
+
+yarn create vite my-react-app --template react
+
+Selecione as opções desejadas e o projeto será criado
+
+Abra o projeto no VS Code e rode o comando npm i para instalar as dependências (ou yarn)
