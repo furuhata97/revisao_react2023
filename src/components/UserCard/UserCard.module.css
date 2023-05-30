@@ -1,0 +1,12 @@
+.userCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.classe :not(:first-child) {
+  padding-top: 1rem;
+}

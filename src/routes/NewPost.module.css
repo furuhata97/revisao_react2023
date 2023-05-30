@@ -1,0 +1,35 @@
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerForm form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerForm input {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #202024;
+  border-radius: 8px;
+  resize: none;
+  height: 1rem;
+  overflow: none;
+  color: #C4C4CC;
+}
+
+.registerForm button{
+  margin-top: 1rem;
+  height: 3rem;
+  width: 6rem;
+  border-radius: 8px;
+  background-color: #00875F;
+  border: 0;
+  color: #C4C4CC;
+  font-weight: bold;
+}

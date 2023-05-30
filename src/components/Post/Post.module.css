@@ -1,0 +1,82 @@
+.post {
+  border-radius: 1rem;
+  width: 48rem;
+  background-color: #202024;
+  display: flex;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+  flex-direction: column;
+  min-height: 2rem;
+  padding: 1rem;
+  width: 100%;
+  margin-right: 2rem;
+}
+
+.post:hover {
+  border: 2px solid #00B37E;
+  cursor: pointer;
+}
+
+.userHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.userImage {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 25%;
+  object-fit: cover;
+  overflow: hidden;
+  padding: 1px;
+  border: 2px solid #00B37E;
+}
+
+.userSubtext {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 8px;
+  width: 100%;
+  color: #E1E1E6;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 4px;
+  color: #8D8D99;
+}
+
+.hours {
+  font-size: small;
+}
+
+.postBody {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  width: 48rem;
+  padding: 1rem;
+  color: #C4C4CC;
+}
+
+.postBody hr {
+  margin: 1rem;
+  height: 1px;
+  background-color: #323238;
+  border: none;
+}
+
+.postBody textarea {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #121214;
+  border-radius: 8px;
+  resize: none;
+  height: 6rem;
+  overflow: none;
+  color: #C4C4CC;
+}

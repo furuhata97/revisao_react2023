@@ -1,0 +1,82 @@
+.container {
+  all: unset;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente os elementos */
+  flex-direction: column;
+  min-height: 100vh; /* Define a altura mínima do contêiner como a altura total da janela */
+  background-color: #121214;
+  color: azure;
+}
+
+.post {
+  max-width: 100rem;
+  border-radius: 8px;
+  background-color: #202024;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.author {
+  display: flex;
+  align-items: start;
+  width: 100%;
+  padding-bottom: 8px;
+}
+
+.userHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.userImage {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 25%;
+  object-fit: cover;
+  overflow: hidden;
+  padding: 1px;
+  border: 2px solid #00B37E;
+}
+
+.userSubtext {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 8px;
+  width: 100%;
+  color: #E1E1E6;
+}
+
+.alignRight {
+  display: flex;
+  justify-content: end;
+  padding-right: 4px;
+  color: #8D8D99;
+  padding-bottom: 16px;
+}
+
+.hours {
+  font-size: small;
+}
+
+.postBody{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-top: 1rem;
+}
+
+.postBody strong {
+  padding-bottom: 1rem;
+}
+
+.postBody button {
+  margin: 1rem 0;
+}
