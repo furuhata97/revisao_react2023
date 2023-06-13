@@ -1,24 +1,53 @@
 import React, { useState, ChangeEvent, MouseEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { format, formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 
 import { RoundedButton } from '../RoundedButton/RoundedButton';
 import styles from './Post.module.css';
+import Comment from '../Comment/Comment';
+import Avatar from '../Avatar/Avatar';
 
-type PostProps = {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
+interface PostProps {
+  post: PostType;
 };
 
-export function Post(props: PostProps) {
-  const [text, setText] = useState<string>('');
+export interface PostType {
+  id: number;
+  author: Author;
+  content: Content[];
+  publishedAt: Date;
+}
+
+interface Author {
+  avatarUrl: string;
+  name: string;
+  role: string;
+}
+
+interface Content {
+  type: "paragraph" | "link";
+  content: string;
+}
+
+export function Post({ post }: PostProps) {
+  const [comments, setComments] = useState<string[]>(['Testando comentários']);
+  const [comment, setComment] = useState<string>('');
   const navigate = useNavigate();
 
+  const formattedDate = format(post.publishedAt, "dd 'de' LLLL 'às' HH:mm'h'", {locale: ptBR});
+  const formattedDateRelativeToNow = formatDistanceToNow(post.publishedAt, {locale: ptBR, addSuffix: true})
+
+  const isNewContentDisabled = comment.length === 0;
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setText(event.target.value);
+    setComment(event.target.value);
+    event.target.setCustomValidity('');
   };
+
+  const handleNewCommentInvalid = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    event.target.setCustomValidity('Esse campo é obrigatório');
+  }
 
   const handleClickPost = (e: MouseEvent<HTMLDivElement>, postId: number) => {
     const { tagName } = e.target as HTMLElement;
@@ -31,51 +60,73 @@ export function Post(props: PostProps) {
     navigate(`/posts/${postId}`);
   };
 
-  const handleCommentSubmit = () => {
-    // Enviar o comentário para a API
-    if (text.length === 0) {
-      console.log('Nenhum comentário');
-    } else {
-      console.log(`Comentário ${text}`);
-    }
+  const handleCommentSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setComments([...comments, comment]);
+    setComment('');
+  };
+
+  const handleDeleteComment = (commentToDeltete: string) => {
+    const commentsWithoutDeletedOne = comments.filter(comment => {
+      return comment != commentToDeltete;
+    });
+    console.log(commentsWithoutDeletedOne);
+    setComments(commentsWithoutDeletedOne)
   };
 
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <img className={styles.avatar} src="https://avatars.githubusercontent.com/u/22104796?v=4" alt="" />
+          <Avatar src={post.author.avatarUrl}/>
           <div className={styles.authorInfo}>
-            <strong>Gustavo Furuhata</strong>
-            <span>Web Developer</span>
+            <strong>{post.author.name}</strong>
+            <span>{post.author.role}</span>
           </div>
         </div>
-        <time title='11 de junho de 2023 às 22:15h' dateTime='2023-06-11 22:15:24'>Publicado há 1h</time>
+        <time 
+          title={formattedDate}
+          dateTime={post.publishedAt.toISOString()}
+        >
+          {formattedDateRelativeToNow}
+        </time>
       </header>
 
       <div className={styles.content}>
-        <p>
-          <p>Fala galeraa 👋</p>
-
-          <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p> 
-
-          <p><a href="">👉{' '}jane.design/doctorcare</a></p> 
-
-          <p>
-            <a href="">#novoprojeto</a>{' '}
-            <a href="">#nlw</a>{' '}
-            <a href="">#rocketseat</a>
-            </p> 
-        </p>
+        {post.content.map(item => {
+          if (item.type === 'paragraph') {
+            return <p key={item.content}>{item.content}</p>
+          } else if (item.type === 'link') {
+            return <p key={item.content}><a href="#">{item.content}</a></p>
+          }
+        })}
       </div>
 
-      <form className={styles.commentForm}>
+      <form onSubmit={handleCommentSubmit} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
-        <textarea placeholder='Deixe um comentário' />
+        <textarea 
+          value={comment} 
+          onChange={handleChange} 
+          placeholder='Deixe um comentário' 
+          required
+          onInvalid={handleNewCommentInvalid}
+        />
         <footer>
-          <button type='submit'>Publicar</button>
+          <button type='submit' disabled={isNewContentDisabled}>Publicar</button>
         </footer>
       </form>
+
+      <div className={styles.commentList}>
+          {comments.map(comment => {
+            return (
+                    <Comment 
+                      key={comment} 
+                      onDeleteComment={handleDeleteComment} 
+                      comment={comment}
+                    />
+                  )
+          })}
+      </div>
     </article>
   )
 }

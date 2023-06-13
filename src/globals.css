@@ -10,7 +10,9 @@
   --gray-900: #121214;
 
   --green-300: #00B37E;
-  --green-500: #00875f;
+  --green-500: #00875F;
+
+  --red-500: #F75A68;
 }
 
 :focus {
@@ -38,9 +40,3 @@ body, input, textarea, button {
   font-weight: 400;
   font-size: 1rem;
 }
-
-/* .container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-} */
