@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import axios from 'axios';
-
 import { Post } from '../components/Post/Post.tsx'
 import { UserCard } from '../components/UserCard/UserCard.tsx';
 import api from '../services/api.ts';
+
+import styles from './HomePage.module.css';
+import { Sidebar } from '../components/Sidebar/Sidebar.tsx';
 
 interface Post {
   id: number;
@@ -32,17 +33,15 @@ export function HomePage() {
   }, []);
 
   return (
-    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
-      <div>
-        <UserCard />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        {dados.map((item) => (
+    <div className={styles.wrapper}>
+      <Sidebar />
+      <main>
+      {dados.map((item) => (
           <div key={item.id} style={{ marginLeft: 'auto', marginRight: '3rem' }}>
             <Post id={item.id} title={item.title} body={item.body} userId={item.userId} />
           </div>
         ))}
-      </div>
+      </main>
     </div>
   )
 }

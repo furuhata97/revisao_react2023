@@ -4,16 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { Header } from './components/Header/Header.tsx'
 
-// interface Post {
-//   id: number;
-//   title: string;
-//   body: string;
-//   userId: number;
-// }
-
 export function App() {
   return (
-    <div className='container'>
+    <div>
       <Header />
       <Outlet />
       <ToastContainer />

@@ -41,27 +41,33 @@ export function Post(props: PostProps) {
   };
 
   return (
-    <div className={styles.post} onClick={(e) => handleClickPost(e, props.id)} >
-      <div className={styles.userHeader}>
-        <img className={styles.userImage} src="https://hope.be/wp-content/uploads/2015/05/no-user-image.gif" alt="Usuário sem foto" />
-        <div className={styles.userSubtext}>
-          <strong>Pessoa de ID {props.userId}</strong>
-          <div className={styles.info}>
-            <span>{props.title}</span>
-            <span className={styles.hours}>Publicado há XXh</span>
+    <article className={styles.post}>
+      <header>
+        <div className={styles.author}>
+          <img className={styles.avatar} src="https://avatars.githubusercontent.com/u/22104796?v=4" alt="" />
+          <div className={styles.authorInfo}>
+            <strong>Gustavo Furuhata</strong>
+            <span>Web Developer</span>
           </div>
         </div>
-      </div>
-      <div className={styles.postBody}>
+        <time title='11 de junho de 2023 às 22:15h' dateTime='2023-06-11 22:15:24'>Publicado há 1h</time>
+      </header>
+
+      <div className={styles.content}>
         <p>
-          {props.body}
+          <p>Fala galeraa 👋</p>
+
+          <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p> 
+
+          <p><a href="">👉{' '}jane.design/doctorcare</a></p> 
+
+          <p>
+            <a href="">#novoprojeto</a>{' '}
+            <a href="">#nlw</a>{' '}
+            <a href="">#rocketseat</a>
+            </p> 
         </p>
-        <hr/>
-        <strong>Deixe seu comentário</strong>
-        <textarea value={text} onChange={handleChange} rows={4} cols={50}></textarea>
-        <RoundedButton color='#00875F' name='Publicar' onClick={handleCommentSubmit}/>
       </div>
-    </div>
-    
+    </article>
   )
 }

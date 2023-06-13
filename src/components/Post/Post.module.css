@@ -1,82 +1,75 @@
 .post {
-  border-radius: 1rem;
-  width: 48rem;
-  background-color: #202024;
-  display: flex;
-  margin-bottom: 1rem;
-  word-wrap: break-word;
-  flex-direction: column;
-  min-height: 2rem;
-  padding: 1rem;
-  width: 100%;
-  margin-right: 2rem;
+ background: var(--gray-800);
+ border-radius: 8px;
+ padding: 2.5rem;
+ margin-top: 2rem;
 }
 
-.post:hover {
-  border: 2px solid #00B37E;
-  cursor: pointer;
+.post + .post {
+  margin-top: 2rem;
 }
 
-.userHeader {
+.content {
+  line-height: 1.6;
+  color: var(--grey-300);
+  margin-top: 1.5rem;
+}
+
+.content p {
+  margin-top: 1rem;
+}
+
+.content a {
+  font-weight: bold;
+  color: var(--green-500);
+  text-decoration: none;
+}
+
+.content a:hover {
+  color: var(--green-300);
+}
+
+.post > header { 
   display: flex;
-  flex-direction: row;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
 }
 
-.userImage {
+.post > header time{ 
+  font-size: 0.875rem;
+  color: var(--gray-400);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.author img {
+  box-sizing: initial;
   width: 3rem;
   height: 3rem;
-  border-radius: 25%;
-  object-fit: cover;
-  overflow: hidden;
-  padding: 1px;
-  border: 2px solid #00B37E;
-}
-
-.userSubtext {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 8px;
-  width: 100%;
-  color: #E1E1E6;
-}
-
-.info {
-  display: flex;
-  justify-content: space-between;
-  padding-right: 4px;
-  color: #8D8D99;
-}
-
-.hours {
-  font-size: small;
-}
-
-.postBody {
-  display: flex;
-  flex-direction: column;
-  word-wrap: break-word;
-  width: 48rem;
-  padding: 1rem;
-  color: #C4C4CC;
-}
-
-.postBody hr {
-  margin: 1rem;
-  height: 1px;
-  background-color: #323238;
-  border: none;
-}
-
-.postBody textarea {
-  margin: 1rem 0;
-  padding: 1rem;
-  background-color: #121214;
   border-radius: 8px;
-  resize: none;
-  height: 6rem;
-  overflow: none;
-  color: #C4C4CC;
+  border: 4px solid var(--gray-800);
+  outline: 2px solid var(--green-500);
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorInfo strong {
+  display: flex;
+  flex-direction: column;
+  color: var(--gray-100);
+  line-height: 1.6;
+}
+
+.authorInfo span {
+  display: flex;
+  flex-direction: column;
+  color: var(--gray-400);
+  line-height: 1.6;
 }
